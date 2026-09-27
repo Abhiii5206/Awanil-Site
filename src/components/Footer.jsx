@@ -11,7 +11,7 @@ export const Footer = () => {
             <h6 className="fw-bold mb-1 fs-6">
               <span className="text-primary">AWANIL</span> STORE
             </h6>
-            <p className="text-muted mb-0" style={{ fontSize: "0.78rem" }}>
+            <p className=" mb-0" style={{ fontSize: "0.78rem" }}>
               Demo drinkware discovery platform powered by React & Supabase.
             </p>
           </div>
@@ -42,14 +42,14 @@ export const Footer = () => {
 
           {/* Copyright */}
           <div className="col-55 col-lg-3 text-center text-lg-end">
-            <span className="text-muted" style={{ fontSize: "0.78rem" }}>
+            <span  style={{ fontSize: "0.78rem" }}>
               © {new Date().getFullYear()} AWANIL STORE
             </span>
           </div>
 
             <div className="col-55 col-lg-3 text-center text-lg-end">
-            <span className="text-muted" style={{ fontSize: "0.78rem" }}>
-               Made with ❤️ by{" Deepanshu"}
+            <span  style={{ fontSize: "0.60rem" }}>
+               Made with ❤️ by{" Deepu"}
             </span>
           </div>
         </div>

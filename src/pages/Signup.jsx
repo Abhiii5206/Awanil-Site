@@ -1,6 +1,8 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "../css/auth.css";
 
 export const Signup = () => {
   const [fullName, setFullName] = useState("");
@@ -19,7 +21,9 @@ export const Signup = () => {
 
     try {
       await signup(email, password, fullName);
+
       alert("Registration successful! You can now log in.");
+
       navigate("/login");
     } catch (err) {
       setError(err.message || "Failed to create account.");
@@ -29,63 +33,117 @@ export const Signup = () => {
   };
 
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-5">
-          <div className="card border-0 shadow-sm p-4">
-            <h3 className="fw-bold mb-3 text-center">Create Account</h3>
+    <div className="auth-page">
 
-            {error && <div className="alert alert-danger">{error}</div>}
+      <div className="auth-container">
 
-            <form onSubmit={handleSignup}>
-              <div className="mb-3">
-                <label className="form-label">Full Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
-              </div>
+        <div className="auth-card">
 
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  required
-                  minLength={6}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-
-              <button type="submit" disabled={loading} className="btn btn-primary w-100 mb-3 fw-bold">
-                {loading ? "Creating..." : "Sign Up"}
-              </button>
-            </form>
-
-            <div className="text-center">
-              <span className="text-muted small">Already registered? </span>
-              <Link to="/login" className="small text-decoration-none fw-semibold">
-                Login
-              </Link>
-            </div>
+          <div className="auth-icon">
+            ✨
           </div>
+
+          <h1 className="auth-title">
+            Create <span className="gradient-text">Account</span>
+          </h1>
+
+          <p className="auth-subtitle">
+            Join AWANIL STORE and start exploring
+          </p>
+
+          {error && (
+            <div className="auth-error">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSignup}>
+
+            <div className="auth-form-group">
+              <label className="auth-label">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                className="auth-input"
+                placeholder="Enter your full name"
+                required
+                value={fullName}
+                onChange={(e) =>
+                  setFullName(e.target.value)
+                }
+              />
+            </div>
+
+
+            <div className="auth-form-group">
+              <label className="auth-label">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                className="auth-input"
+                placeholder="Enter your email"
+                required
+                value={email}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
+              />
+            </div>
+
+
+            <div className="auth-form-group">
+              <label className="auth-label">
+                Password
+              </label>
+
+              <input
+                type="password"
+                className="auth-input"
+                placeholder="Minimum 6 characters"
+                required
+                minLength={6}
+                value={password}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
+              />
+            </div>
+
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="auth-submit"
+            >
+              {loading ? (
+                <span className="auth-loading">
+                  <span className="auth-spinner"></span>
+                  Creating Account...
+                </span>
+              ) : (
+                "Create Account"
+              )}
+            </button>
+
+          </form>
+
+
+          <div className="auth-footer">
+            Already registered?{" "}
+            <Link to="/login">
+              Login
+            </Link>
+          </div>
+
         </div>
+
       </div>
+
     </div>
   );
 };
+

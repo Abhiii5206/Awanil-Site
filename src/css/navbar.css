@@ -1,0 +1,501 @@
+/* ========================================================= AWANIL STORE - PREMIUM NAVBAR ========================================================= */
+/* ========================================================= NAVBAR ========================================================= */
+.custom-glass-nav {
+    position: relative;
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Light Theme Navbar */
+body.light-theme .custom-glass-nav {
+    background: rgba(255, 255, 255, 0.86);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* ========================================================= NAVBAR CONTAINER ========================================================= */
+.custom-glass-nav .container {
+    position: relative;
+    z-index: 5;
+}
+
+/* ========================================================= LOGO ========================================================= */
+.navbar-brand-wrapper {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* 3D Logo Box */
+.logo-3d-box {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35), 0 0 25px rgba(124, 58, 237, 0.2);
+    transform: rotate(-6deg);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.logo-container:hover .logo-3d-box {
+    transform: rotate(0deg) scale(1.08) translateY(-2px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.5), 0 0 30px rgba(124, 58, 237, 0.35);
+}
+
+.logo-icon {
+    font-size: 21px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* ========================================================= LOGO TEXT ========================================================= */
+.logo-text {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    color: #ffffff;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .logo-text {
+    color: #111827;
+}
+
+.logo-accent {
+    margin-left: 2px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: logoGradient 4s linear infinite;
+}
+
+@keyframes logoGradient {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* ========================================================= NAV LINKS ========================================================= */
+.custom-glass-nav .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 12px !important;
+    margin: 0 2px;
+    border-radius: 9px;
+    color: #cbd5e1 !important;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover */
+.custom-glass-nav .nav-link:hover {
+    color: #38bdf8 !important;
+    background: rgba(56, 189, 248, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Active */
+.custom-glass-nav .nav-link.active {
+    color: #38bdf8 !important;
+    background: rgba(56, 189, 248, 0.08);
+}
+
+/* Active Bottom Glow */
+.custom-glass-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    width: 20px;
+    height: 2px;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+}
+
+/* Light Theme Links */
+body.light-theme .custom-glass-nav .nav-link {
+    color: #374151 !important;
+}
+
+body.light-theme .custom-glass-nav .nav-link:hover {
+    color: #2563eb !important;
+    background: rgba(37, 99, 235, 0.07);
+}
+
+body.light-theme .custom-glass-nav .nav-link.active {
+    color: #2563eb !important;
+    background: rgba(37, 99, 235, 0.07);
+}
+
+body.light-theme .custom-glass-nav .nav-link.active::after {
+    background: #2563eb;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+}
+
+/* ========================================================= ADMIN LINK ========================================================= */
+.admin-link {
+    color: #fbbf24 !important;
+}
+
+.admin-link:hover {
+    color: #fcd34d !important;
+    background: rgba(251, 191, 36, 0.08) !important;
+}
+
+/* ========================================================= THEME TOGGLE ========================================================= */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    font-size: 17px;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(18deg) scale(1.08);
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+}
+
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
+/* Light Theme */
+body.light-theme .theme-toggle {
+    background: #ffffff;
+    color: #111827;
+    border-color: #d1d5db;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .theme-toggle:hover {
+    border-color: #2563eb;
+    box-shadow: 0 0 18px rgba(37, 99, 235, 0.2);
+}
+
+/* ========================================================= CART BUTTON ========================================================= */
+.cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-btn:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 13px 28px rgba(124, 58, 237, 0.4);
+}
+
+.cart-btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* Cart Badge */
+.cart-badge {
+    min-width: 20px;
+    height: 20px;
+    padding: 2px 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.35);
+}
+
+/* ========================================================= ACCOUNT BUTTON ========================================================= */
+.account-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(96, 165, 250, 0.5);
+    background: rgba(37, 99, 235, 0.08);
+    color: #60a5fa !important;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.account-btn:hover,
+.account-btn:focus {
+    color: #ffffff !important;
+    background: #2563eb;
+    border-color: #2563eb;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* Light Account */
+body.light-theme .account-btn {
+    color: #2563eb !important;
+    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+body.light-theme .account-btn:hover,
+body.light-theme .account-btn:focus {
+    color: #ffffff !important;
+    background: #2563eb;
+}
+
+/* ========================================================= LOGIN BUTTON ========================================================= */
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid #3b82f6;
+    color: #60a5fa !important;
+    background: transparent;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    color: #ffffff !important;
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* ========================================================= DROPDOWN ========================================================= */
+.custom-dropdown {
+    min-width: 240px;
+    margin-top: 10px !important;
+    padding: 8px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    animation: dropdownIn 0.2s ease-out;
+}
+
+@keyframes dropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Dropdown Header */
+.custom-dropdown .dropdown-header {
+    padding: 9px 12px;
+    color: #94a3b8;
+    font-size: 11px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+/* Dropdown Items */
+.custom-dropdown .dropdown-item {
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background: rgba(56, 189, 248, 0.09);
+    color: #38bdf8;
+}
+
+.custom-dropdown .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Light Dropdown */
+body.light-theme .custom-dropdown {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(15, 23, 42, 0.08);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+body.light-theme .custom-dropdown .dropdown-header {
+    color: #6b7280;
+}
+
+body.light-theme .custom-dropdown .dropdown-item {
+    color: #374151;
+}
+
+body.light-theme .custom-dropdown .dropdown-item:hover {
+    background: #f3f4f6;
+    color: #2563eb;
+}
+
+body.light-theme .custom-dropdown .dropdown-divider {
+    border-color: #e5e7eb;
+}
+
+/* ========================================================= MOBILE TOGGLER ========================================================= */
+.custom-toggler {
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.custom-toggler:hover {
+    border-color: #38bdf8 !important;
+    background: rgba(56, 189, 248, 0.08);
+}
+
+body.light-theme .custom-toggler {
+    border-color: rgba(15, 23, 42, 0.15) !important;
+    background: rgba(15, 23, 42, 0.03);
+}
+
+/* Bootstrap hamburger icon */
+.custom-toggler .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+body.light-theme .custom-toggler .navbar-toggler-icon {
+    filter: none;
+}
+
+/* ========================================================= MOBILE NAV MENU ========================================================= */
+@media (max-width: 991px) {
+    .custom-glass-nav .navbar-collapse {
+        margin-top: 15px;
+        padding: 14px;
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.96);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    body.light-theme .custom-glass-nav .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        border-color: rgba(15, 23, 42, 0.08);
+    }
+
+    .custom-glass-nav .navbar-nav {
+        gap: 4px;
+    }
+
+    .custom-glass-nav .nav-link {
+        width: 100%;
+        padding: 11px 13px !important;
+        margin: 0;
+    }
+
+    .custom-glass-nav .nav-link.active::after {
+        display: none;
+    }
+
+    .custom-glass-nav .d-flex.align-items-center.gap-3 {
+        width: 100%;
+        margin-top: 12px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        flex-wrap: wrap;
+    }
+
+    body.light-theme .custom-glass-nav .d-flex.align-items-center.gap-3 {
+        border-top-color: rgba(15, 23, 42, 0.08);
+    }
+
+    .account-btn,
+    .login-btn {
+        flex: 1;
+    }
+
+    .cart-btn {
+        flex: 1;
+    }
+}
+
+/* ========================================================= SMALL MOBILE ========================================================= */
+@media (max-width: 575px) {
+    .logo-text {
+        font-size: 1.15rem;
+    }
+
+    .logo-3d-box {
+        width: 39px;
+        height: 39px;
+    }
+
+    .logo-icon {
+        font-size: 18px;
+    }
+
+    .custom-glass-nav {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .custom-glass-nav .d-flex.align-items-center.gap-3 {
+        gap: 8px !important;
+    }
+
+    .theme-toggle {
+        width: 38px;
+        height: 38px;
+    }
+}

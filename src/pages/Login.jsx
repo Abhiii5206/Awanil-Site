@@ -1,6 +1,8 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "../css/auth.css";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,51 +29,94 @@ export const Login = () => {
   };
 
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-5">
-          <div className="card border-0 shadow-sm p-4">
-            <h3 className="fw-bold mb-3 text-center">Welcome Back</h3>
+    <div className="auth-page">
 
-            {error && <div className="alert alert-danger">{error}</div>}
+      <div className="auth-container">
 
-            <form onSubmit={handleLogin}>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+        <div className="auth-card">
 
-              <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-
-              <button type="submit" disabled={loading} className="btn btn-primary w-100 mb-3 fw-bold">
-                {loading ? "Authenticating..." : "Login"}
-              </button>
-            </form>
-
-            <div className="text-center">
-              <span className="text-muted small">Don't have an account? </span>
-              <Link to="/signup" className="small text-decoration-none fw-semibold">
-                Sign up
-              </Link>
-            </div>
+          <div className="auth-icon">
+            🔐
           </div>
+
+          <h1 className="auth-title">
+            Welcome <span className="gradient-text">Back</span>
+          </h1>
+
+          <p className="auth-subtitle">
+            Login to your AWANIL STORE account
+          </p>
+
+          {error && (
+            <div className="auth-error">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleLogin}>
+
+            <div className="auth-form-group">
+              <label className="auth-label">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                className="auth-input"
+                placeholder="Enter your email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+
+            <div className="auth-form-group">
+              <label className="auth-label">
+                Password
+              </label>
+
+              <input
+                type="password"
+                className="auth-input"
+                placeholder="Enter your password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="auth-submit"
+            >
+              {loading ? (
+                <span className="auth-loading">
+                  <span className="auth-spinner"></span>
+                  Authenticating...
+                </span>
+              ) : (
+                "Login"
+              )}
+            </button>
+
+          </form>
+
+
+          <div className="auth-footer">
+            Don't have an account?{" "}
+            <Link to="/signup">
+              Create Account
+            </Link>
+          </div>
+
         </div>
+
       </div>
+
     </div>
   );
 };
+

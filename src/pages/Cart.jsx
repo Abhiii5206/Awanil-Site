@@ -10,7 +10,7 @@ export const Cart = () => {
     return (
       <div className="container py-5 text-center">
         <h3 className="fw-bold">Your Cart is Empty</h3>
-        <p className="text-muted">You have no items in your shopping cart yet.</p>
+        <p >You have no items in your shopping cart yet.</p>
         <Link to="/products" className="btn btn-primary mt-3">
           Browse Products
         </Link>

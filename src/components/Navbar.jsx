@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import "../css/navbar.css";
 export const Navbar = ({
   user,
   profile,
@@ -70,9 +70,9 @@ export const Navbar = ({
               </NavLink>
             </li>
             <li className="nav-item">
-            <NavLink className="nav-link" to="/admin/products/add">
-  Add Products
-</NavLink>
+              <NavLink className="nav-link" to="/admin/products/add">
+                Add Products
+              </NavLink>
             </li>
             {isAdmin && (
               <li className="nav-item">
@@ -88,15 +88,20 @@ export const Navbar = ({
 
           <div className="d-flex align-items-center gap-3">
             {/* Theme Switcher */}
+
             <button
               onClick={toggleTheme}
               type="button"
-              className="btn btn-outline-secondary btn-sm rounded-circle p-2 d-flex align-items-center justify-content-center"
-              style={{ width: "38px", height: "38px" }}
-              title="Toggle Light/Dark Theme"
+              className="theme-toggle"
+              title={
+                theme === "light"
+                  ? "Switch to Dark Mode"
+                  : "Switch to Light Mode"
+              }
             >
               {theme === "light" ? "🌙" : "☀️"}
             </button>
+
 
             {/* Cart Link */}
             <Link

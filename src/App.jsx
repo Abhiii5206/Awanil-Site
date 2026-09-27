@@ -1,4 +1,5 @@
 import React from "react";
+import  { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -20,6 +21,15 @@ import { AddProduct } from "./pages/admin/AddProduct";
 import { EditProduct } from "./pages/admin/EditProduct";
 
 export default function App() {
+
+  const [theme, setTheme] = useState( localStorage.getItem("theme") || "dark" );
+
+  const toggleTheme = () => { setTheme((currentTheme) => currentTheme === "dark" ? "light" : "dark" ); };
+
+  useEffect(() => {  document.body.classList.remove( "dark-theme", "light-theme" );
+    document.body.classList.add( `${theme}-theme` );
+    localStorage.setItem("theme", theme); }, [theme]);
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar />

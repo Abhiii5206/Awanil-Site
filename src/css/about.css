@@ -1,0 +1,333 @@
+/* ===================================================== AWANIL STORE - ABOUT PAGE ===================================================== */
+.about-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 70px 0;
+    overflow: hidden;
+}
+
+/* ===================================================== BACKGROUND GLOW ===================================================== */
+.about-page::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    top: -180px;
+    left: -180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.22), transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+.about-page::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -220px;
+    bottom: -200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.18), transparent 70%);
+    filter: blur(25px);
+    pointer-events: none;
+}
+
+/* ===================================================== HERO ===================================================== */
+.about-hero {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto 60px;
+    text-align: center;
+    animation: aboutFadeUp 0.8s ease-out;
+}
+
+.about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin-bottom: 18px;
+    border-radius: 50px;
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.08);
+}
+
+.about-title {
+    margin-bottom: 15px;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    color: #f8fafc;
+    line-height: 1.1;
+}
+
+.about-title .awanil {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-title .store {
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-subtitle {
+    max-width: 700px;
+    margin: auto;
+    color: #94a3b8;
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+/* ===================================================== CONTENT GRID ===================================================== */
+.about-grid {
+    position: relative;
+    z-index: 2;
+}
+
+/* ===================================================== GLASS CARDS ===================================================== */
+.about-card {
+    position: relative;
+    height: 100%;
+    padding: 32px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.65));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Card shine */
+.about-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+}
+
+.about-card:hover::before {
+    left: 140%;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.25);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35), 0 0 30px rgba(37, 99, 235, 0.08);
+}
+
+/* ===================================================== CARD ICON ===================================================== */
+.about-card-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(124, 58, 237, 0.18));
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    font-size: 26px;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12);
+    transition: transform 0.35s ease;
+}
+
+.about-card:hover .about-card-icon {
+    transform: rotate(-6deg) scale(1.08);
+}
+
+/* ===================================================== CARD HEADING ===================================================== */
+.about-card h4 {
+    margin-bottom: 15px;
+    color: #f8fafc;
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.about-card p {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 14px;
+}
+
+/* ===================================================== TECH STACK ===================================================== */
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 0;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: padding-left 0.25s ease, color 0.25s ease;
+}
+
+.tech-list li:last-child {
+    border-bottom: none;
+}
+
+.tech-list li:hover {
+    padding-left: 6px;
+    color: #38bdf8;
+}
+
+.tech-list li strong {
+    color: #f8fafc;
+}
+
+/* ===================================================== FEATURE / STAT STRIP ===================================================== */
+.about-stats {
+    position: relative;
+    z-index: 2;
+    margin-top: 45px;
+}
+
+.about-stat {
+    padding: 24px;
+    text-align: center;
+    border-radius: 18px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.about-stat:hover {
+    transform: translateY(-5px);
+    background: rgba(37, 99, 235, 0.09);
+}
+
+.about-stat-number {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-stat-label {
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ===================================================== LIGHT THEME ===================================================== */
+body.light-theme .about-title {
+    color: #111827;
+}
+
+body.light-theme .about-subtitle {
+    color: #64748b;
+}
+
+body.light-theme .about-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .about-card:hover {
+    border-color: rgba(37, 99, 235, 0.25);
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
+}
+
+body.light-theme .about-card h4 {
+    color: #111827;
+}
+
+body.light-theme .about-card p {
+    color: #64748b;
+}
+
+body.light-theme .tech-list li {
+    color: #475569;
+    border-bottom-color: rgba(15, 23, 42, 0.07);
+}
+
+body.light-theme .tech-list li strong {
+    color: #111827;
+}
+
+body.light-theme .about-stat {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(15, 23, 42, 0.07);
+}
+
+body.light-theme .about-stat-label {
+    color: #64748b;
+}
+
+/* ===================================================== ANIMATION ===================================================== */
+@keyframes aboutFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================================== RESPONSIVE ===================================================== */
+@media (max-width: 768px) {
+    .about-page {
+        padding: 45px 0;
+    }
+
+    .about-hero {
+        margin-bottom: 40px;
+    }
+
+    .about-title {
+        font-size: 2.4rem;
+    }
+
+    .about-subtitle {
+        font-size: 0.98rem;
+    }
+
+    .about-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-card {
+        padding: 22px;
+        border-radius: 20px;
+    }
+}
