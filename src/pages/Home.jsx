@@ -6,6 +6,7 @@ import { supabase } from "../services/supabase";
 import { ProductCard } from "../components/ProductCard";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import "../css/home.css";
+import heroBottle from "../img/main_img.png";
 
 export const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -264,7 +265,7 @@ export const Home = () => {
                 >
 
                   <img
-                    src="/img/main_img.png"
+                    src={heroBottle}
                     alt="AWANIL Premium Bottle"
                   />
 
