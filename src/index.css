@@ -15,12 +15,79 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure background applies smoothly to the whole app layout */
 body.dark-theme {
-  background: #0b0f19;
-  color: #f3f4f6;
+  background-color: #0b0f19 !important;
+  color: #f3f4f6 !important;
+}
+
+body.dark-theme #root {
+  background-color: #0b0f19 !important;
 }
 
 body.light-theme {
-  background: #f5f7fb;
-  color: #111827;
+  background-color: #b3b8c2 !important;
+  color: #111827 !important;
+}
+
+body.light-theme #root {
+  background-color: #e2e2e6 !important;
+}
+/* This will block JavaScript inline styles */
+
+/* Custom Glassmorphism Navbar Base */
+.custom-glass-nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Light Theme Styling */
+body.light-theme .custom-glass-nav {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .navbar-nav .nav-link {
+  color: #111827 !important;
+}
+
+body.light-theme .navbar-nav .nav-link:hover,
+body.light-theme .navbar-nav .nav-link.active {
+  color: #2563eb !important;
+}
+
+/* Dark Theme Styling */
+body.dark-theme .custom-glass-nav {
+  background-color: rgba(11, 15, 25, 0.85) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .navbar-nav .nav-link {
+  color: #f3f4f6 !important;
+}
+
+body.dark-theme .navbar-nav .nav-link:hover,
+body.dark-theme .navbar-nav .nav-link.active {
+  color: #60a5fa !important;
+}
+
+/* Theme Toggle Button Styling */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }

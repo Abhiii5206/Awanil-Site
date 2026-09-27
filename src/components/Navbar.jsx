@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ShoppingCart } from "lucide-react";
 import "../css/navbar.css";
+
 export const Navbar = ({
   user,
   profile,
@@ -11,74 +13,140 @@ export const Navbar = ({
   totalItems = 0,
   handleLogout,
 }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close mobile menu
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg sticky-top custom-glass-nav py-3">
       <div className="container">
-        {/* 3D Animated Glowing Logo */}
-        <Link to="/" className="text-decoration-none">
+
+        {/* ==================== LOGO ==================== */}
+        <Link
+          to="/"
+          className="text-decoration-none"
+          onClick={closeMenu}
+        >
           <motion.div
             className="d-flex align-items-center gap-2"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.08, rotateY: 15 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+            }}
             style={{ perspective: 1000 }}
           >
             <div className="logo-3d-box">
-              <span className="logo-icon">⚡</span>
+              <ShoppingCart
+                size={22}
+                className="text-white"
+              />
             </div>
+
             <span className="logo-text">
-              AWANIL<span className="logo-accent">STORE</span>
+              AWANIL
+              <span className="logo-accent">STORE</span>
             </span>
           </motion.div>
         </Link>
 
-        {/* Hamburger menu button for small screens */}
+        {/* ==================== HAMBURGER ==================== */}
         <button
-          className="navbar-toggler"
+          className={`navbar-toggler custom-toggler ${
+            menuOpen ? "" : "collapsed"
+          }`}
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
+          onClick={toggleMenu}
           aria-controls="navbarContent"
-          aria-expanded="false"
+          aria-expanded={menuOpen}
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Collapsible content container */}
-        <div className="collapse navbar-collapse" id="navbarContent">
+        {/* ==================== NAVBAR CONTENT ==================== */}
+        <div
+          className={`navbar-collapse ${
+            menuOpen ? "show" : ""
+          }`}
+          id="navbarContent"
+        >
+
+          {/* ==================== NAVIGATION LINKS ==================== */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+
+            {/* HOME */}
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink
+                className="nav-link"
+                to="/"
+                onClick={closeMenu}
+              >
                 Home
               </NavLink>
             </li>
+
+            {/* PRODUCTS */}
             <li className="nav-item">
-              <NavLink className="nav-link" to="/products">
+              <NavLink
+                className="nav-link"
+                to="/products"
+                onClick={closeMenu}
+              >
                 Products
               </NavLink>
             </li>
+
+            {/* ABOUT */}
             <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
+              <NavLink
+                className="nav-link"
+                to="/about"
+                onClick={closeMenu}
+              >
                 About
               </NavLink>
             </li>
+
+            {/* CONTACT */}
             <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">
+              <NavLink
+                className="nav-link"
+                to="/contact"
+                onClick={closeMenu}
+              >
                 Contact
               </NavLink>
             </li>
+
+            {/* ADD PRODUCTS */}
             <li className="nav-item">
-              <NavLink className="nav-link" to="/admin/products/add">
+              <NavLink
+                className="nav-link"
+                to="/admin/products/add"
+                onClick={closeMenu}
+              >
                 Add Products
               </NavLink>
             </li>
+
+            {/* ADMIN PANEL */}
             {isAdmin && (
               <li className="nav-item">
                 <NavLink
                   className="nav-link text-warning fw-semibold"
                   to="/admin"
+                  onClick={closeMenu}
                 >
                   ⚡ Admin Panel
                 </NavLink>
@@ -86,9 +154,10 @@ export const Navbar = ({
             )}
           </ul>
 
+          {/* ==================== RIGHT SIDE ==================== */}
           <div className="d-flex align-items-center gap-3">
-            {/* Theme Switcher */}
 
+            {/* ==================== THEME BUTTON ==================== */}
             <button
               onClick={toggleTheme}
               type="button"
@@ -102,13 +171,14 @@ export const Navbar = ({
               {theme === "light" ? "🌙" : "☀️"}
             </button>
 
-
-            {/* Cart Link */}
+            {/* ==================== CART ==================== */}
             <Link
               to="/cart"
-              className="btn btn-primary position-relative d-flex align-items-center gap-2"
+              onClick={closeMenu}
+              className="btn btn-primary position-relative d-flex align-items-center gap-2 cart-btn"
             >
               🛒 Cart
+
               {totalItems > 0 && (
                 <span className="badge bg-danger rounded-pill">
                   {totalItems}
@@ -116,45 +186,68 @@ export const Navbar = ({
               )}
             </Link>
 
-            {/* Authentication Action */}
+            {/* ==================== USER ACCOUNT ==================== */}
             {user ? (
               <div className="dropdown">
+
                 <button
-                  className="btn btn-outline-primary dropdown-toggle"
+                  className="btn btn-outline-primary dropdown-toggle account-btn"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   👤 {profile?.full_name || "Account"}
                 </button>
+
                 <ul className="dropdown-menu dropdown-menu-end shadow">
-                  <li className="dropdown-header">Logged in as {user.email}</li>
+
+                  {/* Email */}
+                  <li>
+                    <div className="dropdown-header">
+                      Logged in as {user.email}
+                    </div>
+                  </li>
+
+                  {/* Admin Dashboard */}
                   {isAdmin && (
                     <li>
                       <Link
                         className="dropdown-item fw-semibold text-warning"
                         to="/admin"
+                        onClick={closeMenu}
                       >
                         Admin Dashboard
                       </Link>
                     </li>
                   )}
+
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
+
+                  {/* Logout */}
                   <li>
                     <button
-                      onClick={handleLogout}
+                      onClick={() => {
+                        closeMenu();
+                        handleLogout();
+                      }}
                       type="button"
                       className="dropdown-item text-danger"
                     >
                       Logout
                     </button>
                   </li>
+
                 </ul>
               </div>
             ) : (
-              <Link to="/login" className="btn btn-outline-primary">
+              /* ==================== LOGIN ==================== */
+              <Link
+                to="/login"
+                className="btn btn-outline-primary login-btn"
+                onClick={closeMenu}
+              >
                 Login
               </Link>
             )}

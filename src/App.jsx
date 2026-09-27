@@ -1,5 +1,4 @@
-import React from "react";
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -14,25 +13,30 @@ import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 
-
 import { Dashboard } from "./pages/admin/Dashboard";
 import { ManageProducts } from "./pages/admin/ManageProducts";
 import { AddProduct } from "./pages/admin/AddProduct";
 import { EditProduct } from "./pages/admin/EditProduct";
 
 export default function App() {
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "dark"
+  );
 
-  const [theme, setTheme] = useState( localStorage.getItem("theme") || "dark" );
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  };
 
-  const toggleTheme = () => { setTheme((currentTheme) => currentTheme === "dark" ? "light" : "dark" ); };
-
-  useEffect(() => {  document.body.classList.remove( "dark-theme", "light-theme" );
-    document.body.classList.add( `${theme}-theme` );
-    localStorage.setItem("theme", theme); }, [theme]);
+  useEffect(() => {
+    document.body.classList.remove("dark-theme", "light-theme");
+    document.body.classList.add(`${theme}-theme`);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <Navbar />
+      {/* Pass theme and toggleTheme props here */}
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main className="flex-grow-1">
         <Routes>
           {/* Public Routes */}
@@ -44,7 +48,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-
 
           {/* Protected Admin Routes */}
           <Route element={<ProtectedRoute requireAdmin={true} />}>
