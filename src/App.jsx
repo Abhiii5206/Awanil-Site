@@ -48,15 +48,14 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/admin/products/add" element={<AddProduct />} />
 
           {/* Protected Admin Routes */}
           <Route element={<ProtectedRoute requireAdmin={true} />}>
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/products" element={<ManageProducts />} />
-            <Route path="/admin/products/add" element={<AddProduct />} />
             <Route path="/admin/products/edit/:id" element={<EditProduct />} />
           </Route>
-
           {/* Catch-all 404 */}
           <Route
             path="*"
