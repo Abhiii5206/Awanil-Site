@@ -146,49 +146,35 @@ export const Products = () => {
 
   const [showFilters, setShowFilters] = useState(false);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
 
-      try {
-        const { data, error } = await supabase
-          .from("products")
-          .select("*")
-          .order("created_at", {
-            ascending: false,
-          });
+useEffect(() => {
+  const fetchProducts = async () => {
+    setLoading(true);
 
-        if (error) {
-          throw error;
-        }
+    try {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-        /*
-          If Supabase has products,
-          show those products.
-
-          If table is empty,
-          show demo products.
-        */
-        setProducts(
-          data && data.length > 0
-            ? data
-            : DEMO_PRODUCTS
-        );
-      } catch (err) {
-        console.error(
-          "Error fetching products:",
-          err.message
-        );
-
-        // Demo products if Supabase request fails
-        setProducts(DEMO_PRODUCTS);
-      } finally {
-        setLoading(false);
+      if (error) {
+        throw error;
       }
-    };
 
-    fetchProducts();
-  }, []);
+      console.log("Products fetched from Supabase:", data);
+
+      setProducts(data ?? []);
+    } catch (err) {
+      console.error("Error fetching products:", err);
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProducts();
+}, []);
+
 
   // ------------------------------------------
   // GET CATEGORIES

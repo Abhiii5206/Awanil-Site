@@ -27,7 +27,7 @@ export const Navbar = ({
 
   return (
     <nav className="navbar navbar-expand-lg sticky-top custom-glass-nav py-3">
-      <div className="container">
+      <div className="container navbar-layout">
 
         {/* ==================== LOGO ==================== */}
         <Link
@@ -155,7 +155,7 @@ export const Navbar = ({
           </ul>
 
           {/* ==================== RIGHT SIDE ==================== */}
-          <div className="d-flex align-items-center gap-3">
+          <div className="navbar-actions d-flex align-items-center gap-7">
 
             {/* ==================== THEME BUTTON ==================== */}
             <button

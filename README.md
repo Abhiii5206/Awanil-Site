@@ -19,3 +19,17 @@ AWANIL STORE is a full-featured e-commerce demonstration application built using
 1. **Clone & Install Dependencies**
    ```bash
    npm install
+
+
+
+   Here is the command to delete you old products 
+
+
+   SELECT id, name, price, stock
+FROM public.products
+ORDER BY created_at DESC;
+
+
+
+DELETE FROM public.products
+WHERE id = 'f1e18e94-aaca-4380-aa58-a54d93afb8a9';
