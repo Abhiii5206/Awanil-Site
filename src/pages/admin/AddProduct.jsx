@@ -207,7 +207,7 @@ export const AddProduct = () => {
 
       alert("Product added successfully!");
 
-      navigate("/admin/products");
+     navigate("/products");
 
     } catch (error) {
       console.error("Add product error:", error);
