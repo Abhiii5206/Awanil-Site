@@ -343,113 +343,154 @@ export const Home = () => {
           FEATURED PRODUCTS
       =========================================== */}
 
-      <section className="featured-section">
+{/* FEATURED PRODUCTS */}
+<section className="featured-section">
+  <div className="container">
 
-        <div className="container">
+    <motion.div
+      className="featured-heading"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7 }}
+    >
+      <div>
+        <span className="section-eyebrow">
+          CURATED FOR YOU
+        </span>
 
-          <motion.div
-            className="featured-heading"
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.3,
-            }}
-            transition={{
-              duration: 0.7,
-            }}
+        <h2>
+          Featured <span>Collection</span>
+        </h2>
+
+        <p>
+          Discover our most loved premium hydration essentials.
+        </p>
+      </div>
+
+      <Link to="/products" className="view-products-btn">
+        View All Products <span>→</span>
+      </Link>
+    </motion.div>
+
+    {loading ? (
+      <div className="py-5">
+        <LoadingSpinner />
+      </div>
+    ) : featuredProducts.length === 0 ? (
+      <p>No featured products available.</p>
+    ) : (
+      <div className="products-grid">
+        {featuredProducts.map((product, index) => (
+          <motion.article
+            className="store-product-card"
+            key={product.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-
-            <div>
-
-              <span className="section-eyebrow">
-                CURATED FOR YOU
-              </span>
-
-              <h2>
-                Featured
-                <span> Collection</span>
-              </h2>
-
-              <p>
-                Discover our most loved premium hydration
-                essentials.
-              </p>
-
-            </div>
-
-
             <Link
-              to="/products"
-              className="view-products-btn"
+              to={`/products/${product.id}`}
+              className="product-image-wrapper"
             >
-              View All Products
-              <span>→</span>
-            </Link>
-
-          </motion.div>
-
-
-          {loading ? (
-
-            <div className="py-5">
-              <LoadingSpinner />
-            </div>
-
-          ) : (
-
-            <div className="row g-4">
-
-              {featuredProducts.map(
-                (product, index) => (
-
-                  <motion.div
-                    className="col-12 col-sm-6 col-lg-3"
-                    key={product.id}
-                    initial={{
-                      opacity: 0,
-                      y: 60,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                      amount: 0.2,
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      delay: index * 0.12,
-                    }}
-                  >
-
-                    <div className="premium-product-wrapper">
-
-                      <ProductCard
-                        product={product}
-                      />
-
-                    </div>
-
-                  </motion.div>
-
-                )
+              {product.badge && (
+                <span className="product-badge">
+                  {product.badge}
+                </span>
               )}
 
+              {Number(product.original_price) > Number(product.price) && (
+                <span className="discount-badge">
+                  -{Math.round(
+                    ((Number(product.original_price) - Number(product.price)) /
+                      Number(product.original_price)) * 100
+                  )}%
+                </span>
+              )}
+
+              <img
+                src={product.image_url || "https://via.placeholder.com/700x700?text=No+Image"}
+                alt={product.name}
+                loading="lazy"
+              />
+
+              <div className="image-overlay">View Product</div>
+            </Link>
+
+            <div className="product-details">
+              <div className="product-category">
+                {product.category || "Bottles"}
+              </div>
+
+              <Link
+                to={`/products/${product.id}`}
+                className="product-name"
+              >
+                {product.name}
+              </Link>
+
+              <p className="product-description">
+                {product.description || "Premium quality product."}
+              </p>
+
+              <div className="product-rating">
+                <div className="stars">
+                  <span>★</span>
+                  <span>{Number(product.rating || 0).toFixed(1)}</span>
+                </div>
+                <span className="rating-text">Premium Quality</span>
+              </div>
+
+              <div className="product-specs">
+                {product.capacity && <span>{product.capacity}</span>}
+                {product.material && <span>{product.material}</span>}
+              </div>
+
+              <div className="product-price-row">
+                <div>
+                  <span className="product-price">
+                    ₹{Number(product.price || 0).toLocaleString("en-IN")}
+                  </span>
+
+                  {Number(product.original_price) > Number(product.price) && (
+                    <span className="product-mrp">
+                      ₹{Number(product.original_price).toLocaleString("en-IN")}
+                    </span>
+                  )}
+                </div>
+
+                <span className={
+                  Number(product.stock) > 0
+                    ? "stock-status"
+                    : "stock-status out"
+                }>
+                  {Number(product.stock) > 0 ? "In Stock" : "Out of Stock"}
+                </span>
+              </div>
+
+              <div className="product-actions">
+                <Link
+                  to={`/products/${product.id}`}
+                  className="view-product-btn"
+                >
+                  View Details
+                </Link>
+
+                {/* <Link
+                  to={`/products/${product.id}`}
+                  className="add-cart-btn"
+                >
+                  🛒 Add
+                </Link> */}
+              </div>
             </div>
-
-          )}
-
-        </div>
-
-      </section>
+          </motion.article>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
 
 
       {/* ==========================================
